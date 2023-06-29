@@ -1,0 +1,31 @@
+<div [class.card-layout-blue]="task?.title === 'user story'" [class.card-layout-green]="task?.title === 'tech task'" [class.card-layout-red]="task?.title === 'bug'">
+  <p>
+    {{task?.day}},{{task?.time}}
+  </p>
+  <h3>{{task?.projectName}}</h3>
+  <h4>{{task?.title}}</h4>
+  <h5>{{task?.level}}</h5>
+  <p>
+    {{task?.issue}}
+  </p>
+  <button
+  type="button"
+  class="btn btn-outline-secondary btn-sm"
+  className="btn"
+  *ngIf="loginUser !== null"
+  (click)="onEdit(task)"
+  data-toggle="modal" data-target="#exampleModal"
+  >
+    Edit
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-secondary btn-sm"
+    className="btn"
+    *ngIf="loginUser !== null"
+    (click)="onDelete(task)"
+  >
+    Delete
+  </button>
+</div>
+

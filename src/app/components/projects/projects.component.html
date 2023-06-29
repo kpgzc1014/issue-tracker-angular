@@ -1,0 +1,41 @@
+<table class="table table-bordered">
+  <thead>
+      <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Start-Date</th>
+          <th scope="col">Target-End-Date</th>
+          <th scope="col">Actual-End-Date</th>
+          <th scope="col">Create-On</th>
+          <th scope="col">Create-By</th>
+          <th scope="col">Modified-On</th>
+          <th scope="col">Modified-By</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let project of projects">
+          <td>
+            {{project.name}}
+          </td>
+          <td>
+            {{project.startDate}}
+          </td>
+          <td>
+            {{project.targetEndDate}}
+          </td>
+          <td>
+            {{project.actualEndDate}}
+          <td>
+            {{project.createdOn}}
+          </td>
+          <td>
+            {{project.createdBy}}
+          </td>
+          <td>
+            {{project.modifiedOn}}
+          </td>
+          <td>
+            {{project.modifiedBy}}
+          </td>
+      </tr>
+  </tbody>
+</table>

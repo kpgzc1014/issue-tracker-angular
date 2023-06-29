@@ -1,0 +1,85 @@
+<table class="table table-bordered">
+  <thead>
+      <tr>
+          <th scope="col">WAITING</th>
+          <th scope="col">DEVELOPING</th>
+          <th scope="col">WAIT FOR TEST</th>
+          <th scope="col">TESTING</th>
+          <th scope="col">COMPLETED</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>
+            <div *ngFor="let task of tasks">
+              <app-read-only-task *ngIf="task.level === 'waitting'" [task]="task" (onDeleteTask)="deleteTask(task)" (onEditTask)="getEditTask(task)"></app-read-only-task>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let task of tasks">
+              <app-read-only-task *ngIf="task.level === 'developing'" [task]="task" (onDeleteTask)="deleteTask(task)" (onEditTask)="getEditTask(task)"></app-read-only-task>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let task of tasks">
+              <div>
+                <app-read-only-task *ngIf="task.level === 'wait for test'" [task]="task" (onDeleteTask)="deleteTask(task)" (onEditTask)="getEditTask(task)"></app-read-only-task>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let task of tasks">
+              <app-read-only-task *ngIf="task.level === 'testing'" [task]="task" (onDeleteTask)="deleteTask(task)" (onEditTask)="getEditTask(task)"></app-read-only-task>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let task of tasks">
+              <app-read-only-task *ngIf="task.level === 'completed'" [task]="task" (onDeleteTask)="deleteTask(task)" (onEditTask)="getEditTask(task)"></app-read-only-task>
+            </div>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">{{projectName}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <div class="form-group">
+              <select class="form-control" id="exampleFormControlSelect1" name="title" value={{title}} [(ngModel)]="title">
+                <option value="user story">User story</option>
+                <option value='tech task'>Tech task</option>
+                <option value='bug'>Bug</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control" id="exampleFormControlSelect1" name='level' value={{level}} [(ngModel)]="level">
+                <option value='waitting'>Waitting</option>
+                <option value='developing'>Developing</option>
+                <option value='wait for test'>Wait for test</option>
+                <option value='testing'>Testing</option>
+                <option value='completed'>Completed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="issue" [(ngModel)]="issue" value={{issue}}></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onSave()" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

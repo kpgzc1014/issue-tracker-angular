@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Issue-Tracker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/tasks">Tasks <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/projects">Projects <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <button type="button" class="btn btn-dark" (click)="onLogin()" *ngIf="loginUser === null">
+      Login
+    </button>
+
+
+    <div class="dropdown" *ngIf="loginUser !== null">
+      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+      {{user}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" routerLink="/addtask">Add Issue</a>
+        <a class="dropdown-item" routerLink="/" (click)="logout()">Logout</a>
+      </div>
+    </div>
+
+  </div>
+</nav>
